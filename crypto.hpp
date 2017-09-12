@@ -27,7 +27,7 @@ public:
   /// Return the MD5 (128-bit) hash from input.
   static std::string md5(const std::string &input) {
     string hash;
-    hash.resize(16);
+    hash.resize(128 / 8);
     MD5((const unsigned char *)input.data(),input.size(),(unsigned char *) hash.data());
     return hash;
     //throw std::logic_error("not yet implemented");
@@ -44,7 +44,7 @@ public:
   /// Return the SHA-256 (256-bit) hash from input.
   static std::string sha256(const std::string &input) {
     string hash;
-    hash.resize(32);
+    hash.resize(256 / 8);
     SHA((const unsigned char *)input.data(), input.size(),(unsigned char *)hash.data());
     return hash;
     //throw std::logic_error("not yet implemented");
@@ -53,7 +53,7 @@ public:
   /// Return the SHA-512 (512-bit) hash from input.
   static std::string sha512(const std::string &input) {
     string hash;
-    hash.resize(64);
+    hash.resize(512 / 8);
     SHA512((const unsigned char *)input.data(),input.size(),(unsigned char *)hash.data());
     return hash;
     //throw std::logic_error("not yet implemented");
