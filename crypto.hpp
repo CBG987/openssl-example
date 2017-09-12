@@ -28,7 +28,7 @@ public:
   static std::string md5(const std::string &input) {
     string hash;
     hash.resize(128 / 8);
-    MD5((const unsigned char *)input.data(),input.size(),(unsigned char *) hash.data());
+    MD5((const unsigned char *)input.data(),input.size(),(unsigned char *)hash.data());
     return hash;
     //throw std::logic_error("not yet implemented");
   }
