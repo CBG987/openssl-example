@@ -1,5 +1,7 @@
 sudo: required
 
+language: cpp
+
 services:
   - docker
 
@@ -10,5 +12,5 @@ script:
       cd /repository && mkdir build && cd build &&
       cmake -DCMAKE_CXX_FLAGS=-Werror .. &&
       make &&
-      CTEST_OUTPUT_ON_FAILURE=1 make test
+      CTEST_OUTPUT_ON_FAILURE=0 make test
     "
