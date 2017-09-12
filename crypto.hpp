@@ -1,4 +1,5 @@
 #include <openssl/evp.h>
+#include <openssl/md5.h>
 #include <openssl/sha.h>
 #include <sstream>
 #include <iomanip>
@@ -9,6 +10,9 @@
 //       be used in modern C++.
 
 /// Limited C++ bindings for the OpenSSL Crypto functions.
+
+using namespace std;
+
 class Crypto {
 public:
   /// Return hex string from bytes in input string.
@@ -22,7 +26,11 @@ public:
 
   /// Return the MD5 (128-bit) hash from input.
   static std::string md5(const std::string &input) {
-    throw std::logic_error("not yet implemented");
+    string hash;
+    hash.resize(16);
+    MD5((const unsigned char *)input.data(),input.size(),(unsigned char *) hash.data());
+    return hash;
+    //throw std::logic_error("not yet implemented");
   }
 
   /// Return the SHA-1 (160-bit) hash from input.
@@ -35,12 +43,20 @@ public:
 
   /// Return the SHA-256 (256-bit) hash from input.
   static std::string sha256(const std::string &input) {
-    throw std::logic_error("not yet implemented");
+    string hash;
+    hash.resize(32);
+    SHA((const unsigned char *)input.data(), input.size(),(unsigned char *)hash.data());
+    return hash;
+    //throw std::logic_error("not yet implemented");
   }
 
   /// Return the SHA-512 (512-bit) hash from input.
   static std::string sha512(const std::string &input) {
-    throw std::logic_error("not yet implemented");
+    string hash;
+    hash.resize(64);
+    SHA512((const unsigned char *)input.data(),input.size(),(unsigned char *)hash.data());
+    return hash;
+    //throw std::logic_error("not yet implemented");
   }
 
   /// Return key from the Password-Based Key Derivation Function 2 (PBKDF2).
